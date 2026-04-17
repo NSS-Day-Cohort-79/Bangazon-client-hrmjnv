@@ -43,8 +43,8 @@ export default function Register() {
   return (
     <div className="columns is-centered">
       <div className="column is-half">
-        <form className="box">
-          <h1 className="title">Welcome!</h1>
+        <form className="box" onSubmit={submit}>
+        <h1 className="title">Welcome!</h1>
           <Input
             id="firstName"
             refEl={firstName}
@@ -98,15 +98,15 @@ export default function Register() {
 
           <div className="field is-grouped">
             <div className="control">
-              <button className="button is-link" onClick={submit}>Submit</button>
-            </div>
-            <div className="control">
-              <Link href="/login">
-                <button className="button is-link is-light">Cancel</button>
-              </Link>
-            </div>
-          </div>
-        </form>
+              <button className="button is-link" type="submit">Submit</button>
+        </div>
+        <div className="control">
+          <Link href="/login">
+          <button className="button is-link is-light">Cancel</button>
+        </Link>
+      </div>
+    </div>
+  </form>
       </div>
     </div>
   )
