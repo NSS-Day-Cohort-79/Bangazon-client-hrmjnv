@@ -50,12 +50,14 @@ export default function Register() {
             refEl={firstName}
             type="text"
             label="First Name"
+            required
           />
           <Input
             id="lastName"
             refEl={lastName}
             type="text"
             label="Last Name"
+            required
           />
 
           <Input
@@ -63,30 +65,35 @@ export default function Register() {
             refEl={username}
             type="text"
             label="Username"
+            required
           />
            <Input
             id="email"
             refEl={email}
             type="text"
             label="Email"
+            required
           />
           <Input
             id="password"
             refEl={password}
             type="password"
             label="Password"
+            required
           />
           <Input
             id="phoneNumber"
             refEl={phoneNumber}
             type="text"
             label="Phone Number"
+            required
           />
           <Input
             id="address"
             refEl={address}
             type="text"
             label="Address"
+            required
           />
 
           <div className="field is-grouped">
