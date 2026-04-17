@@ -13,17 +13,23 @@ export default function Register() {
   const firstName = useRef('')
   const lastName = useRef('')
   const username = useRef('')
+  const email = useRef('')
   const password = useRef('')
   const router = useRouter()
+  const phoneNumber = useRef('')
+  const address = useRef('')
 
   const submit = (e) => {
     e.preventDefault()
 
     const user = {
       username: username.current.value,
+      email: email.current.value,
       password: password.current.value,
       first_name: firstName.current.value,
-      last_name: lastName.current.value
+      last_name: lastName.current.value,
+      phone_number: phoneNumber.current.value,
+      address: address.current.value      
     }
 
     register(user).then((res) => {
@@ -37,19 +43,21 @@ export default function Register() {
   return (
     <div className="columns is-centered">
       <div className="column is-half">
-        <form className="box">
-          <h1 className="title">Welcome!</h1>
+        <form className="box" onSubmit={submit}>
+        <h1 className="title">Welcome!</h1>
           <Input
             id="firstName"
             refEl={firstName}
             type="text"
             label="First Name"
+            required
           />
           <Input
             id="lastName"
             refEl={lastName}
             type="text"
             label="Last Name"
+            required
           />
 
           <Input
@@ -57,25 +65,48 @@ export default function Register() {
             refEl={username}
             type="text"
             label="Username"
+            required
+          />
+           <Input
+            id="email"
+            refEl={email}
+            type="text"
+            label="Email"
+            required
           />
           <Input
             id="password"
             refEl={password}
             type="password"
             label="Password"
+            required
+          />
+          <Input
+            id="phoneNumber"
+            refEl={phoneNumber}
+            type="text"
+            label="Phone Number"
+            required
+          />
+          <Input
+            id="address"
+            refEl={address}
+            type="text"
+            label="Address"
+            required
           />
 
           <div className="field is-grouped">
             <div className="control">
-              <button className="button is-link" onClick={submit}>Submit</button>
-            </div>
-            <div className="control">
-              <Link href="/login">
-                <button className="button is-link is-light">Cancel</button>
-              </Link>
-            </div>
-          </div>
-        </form>
+              <button className="button is-link" type="submit">Submit</button>
+        </div>
+        <div className="control">
+          <Link href="/login">
+          <button className="button is-link is-light">Cancel</button>
+        </Link>
+      </div>
+    </div>
+  </form>
       </div>
     </div>
   )
