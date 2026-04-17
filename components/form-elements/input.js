@@ -1,6 +1,6 @@
-export function Input({ id, type="text", placeholder="", refEl=undefined, label=undefined, onChangeEvent, addClass="", required, children }) {
+export function Input({ id, type="text", placeholder="", refEl=undefined, label=undefined, onChangeEvent, addlClass="", required, children }) {
   return (
-    <div className={`field ${addClass}`}>
+    <div className={`field ${addlClass}`}>
       {label && <label className="label">{label}</label>}
       <div className="control">
         <input
