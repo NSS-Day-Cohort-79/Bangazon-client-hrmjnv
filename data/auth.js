@@ -21,9 +21,10 @@ export function register(user) {
 }
 
 export function getUserProfile() {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('token') : null
   return fetchWithResponse('my-profile', {
     headers: {
-      Authorization: `Token ${localStorage.getItem('token')}`,
+      Authorization: `Token ${token}`,
     }
   })
 }
