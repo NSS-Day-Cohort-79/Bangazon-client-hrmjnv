@@ -1,7 +1,7 @@
 import { fetchWithResponse } from './fetcher'
 
 export function getCart() {
-  return fetchWithResponse('cårt', {
+  return fetchWithResponse('cart', {
     headers: {
       Authorization: `Token ${localStorage.getItem('token')}`
     }
@@ -16,13 +16,13 @@ export function getOrders() {
   })
 }
 
-export function completeCurrentOrder(orderId, paymentTypeId) {
-  return fetchWithResponse(`orders/${orderId}/complete`, {
+export function completeCurrentOrder(orderId, payment_type) {
+  return fetchWithResponse(`orders/${orderId}`, {
     method: 'PUT',
     headers: {
       Authorization: `Token ${localStorage.getItem('token')}`,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({paymentTypeId})
+    body: JSON.stringify({payment_type})
   })
 }
