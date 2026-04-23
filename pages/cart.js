@@ -5,7 +5,7 @@ import Layout from '../components/layout'
 import Navbar from '../components/navbar'
 import CartDetail from '../components/order/detail'
 import CompleteFormModal from '../components/order/form-modal'
-import { completeCurrentOrder, getCart } from '../data/orders'
+import { completeCurrentOrder, deleteCurrentOrder, getCart } from '../data/orders'
 import { getPaymentTypes } from '../data/payment-types'
 import { removeProductFromOrder } from '../data/products'
 
@@ -36,6 +36,10 @@ export default function Cart() {
     completeCurrentOrder(cart.id, paymentTypeId).then(() => router.push('/my-orders'))
   }
 
+  const deleteOrder = () => {
+    deleteCurrentOrder().then(() => router.push('/products'))
+  }
+
   const removeProduct = (productId) => {
     removeProductFromOrder(productId).then(refresh)
   }
@@ -52,7 +56,7 @@ export default function Cart() {
         <CartDetail cart={cart} removeProduct={removeProduct} />
         <>
           <a className="card-footer-item" onClick={() => setShowCompleteForm(true)}>Complete Order</a>
-          <a className="card-footer-item">Delete Order</a>
+          <a className="card-footer-item" onClick={deleteOrder}>Delete Order</a>
         </>
       </CardLayout>
     </>
