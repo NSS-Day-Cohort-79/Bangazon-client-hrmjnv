@@ -9,7 +9,7 @@ import { useAppContext } from '../../../context/state'
 export default function NewProduct() {
   const formEl = useRef()
   const router = useRouter()
-  const [product, setProduct] = useState()
+  const [product, setProduct] = useState({})
   const { profile } = useAppContext()
   const { id } = router.query
 
@@ -17,6 +17,7 @@ export default function NewProduct() {
     if (id && profile) {
       getProductById(id).then(productData => {
         if (productData) {
+          console.log(productData)
           if (productData.store.id === profile.store?.id) {
             setProduct(productData)
           } else {
@@ -28,7 +29,7 @@ export default function NewProduct() {
   }, [id, profile])
 
   useEffect(() => {
-    if (product) {
+    if (product.id) {
       const { name, description, price, category, location, quantity } = formEl.current
 
       name.value = product.name
@@ -48,7 +49,7 @@ export default function NewProduct() {
       name: name.value,
       description: description.value,
       price: price.value,
-      categoryId: category.value,
+      category_id: category.value,
       location: location.value,
       quantity: quantity.value
     }

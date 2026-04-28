@@ -28,6 +28,8 @@ export default function StoreDetail() {
     if (storeData) {
       setStore(storeData)
     }
+  }).catch(() => {
+    router.push('/stores')
   })
 
   const removeProduct = (productId) => {

@@ -4,9 +4,11 @@ import Layout from '../../components/layout'
 import Navbar from '../../components/navbar'
 import { addProduct } from '../../data/products'
 import ProductForm from '../../components/product/form'
+import { useAppContext } from '../../context/state'
 export default function NewProduct() {
   const formEl = useRef()
   const router = useRouter()
+  const { profile } = useAppContext()
 
   const saveProduct = () => {
     const { name, description, price, category, location, quantity  } = formEl.current
@@ -14,9 +16,10 @@ export default function NewProduct() {
       name: name.value,
       description: description.value,
       price: price.value,
-      categoryId: category.value,
+      category_id: category.value,
       location: location.value,
-      quantity: quantity.value
+      quantity: quantity.value,
+      store_id: profile.store?.id
     }
     addProduct(product).then((res) => router.push(`/products/${res.id}`))
   }
