@@ -30,7 +30,7 @@ export default function NewProduct() {
 
   useEffect(() => {
     if (product.id) {
-      const { name, description, price, category, location, quantity } = formEl.current
+      const { name, description, price, category, location, quantity, store } = formEl.current
 
       name.value = product.name
       description.value = product.description
@@ -45,16 +45,17 @@ export default function NewProduct() {
   const saveProduct = () => {
     const { name, description, price, category, location, quantity } = formEl.current
 
-    const product = {
+    const updatedProduct = {
       name: name.value,
       description: description.value,
       price: price.value,
       category_id: category.value,
       location: location.value,
-      quantity: quantity.value
+      quantity: quantity.value,
+      store_id: product.store?.id
     }
 
-    editProduct(id, product).then(() => router.push(`/products/${id}`))
+    editProduct(id, updatedProduct).then(() => router.push(`/products/${id}`))
   }
 
   return (
