@@ -6,9 +6,8 @@ export default function RatingForm({ saveRating }) {
   const [comment, setComment] = useState("")
   
   const submitRating = () => {
-    const outOf5 = rating/20
     saveRating({
-      score: outOf5,
+      score: rating,
       review: comment
     })
   }
