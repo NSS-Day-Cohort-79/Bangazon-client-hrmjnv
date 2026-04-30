@@ -39,6 +39,7 @@ export default function ProductForm({ formEl, saveEvent, title, router }) {
           id="quantity"
           label="Quantity"
           type="number"
+          min="1"
         />
       </form>
       <>

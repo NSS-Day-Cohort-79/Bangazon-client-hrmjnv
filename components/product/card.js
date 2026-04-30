@@ -18,6 +18,9 @@ export function ProductCard({ product, removeProduct, isOwner = false, width="is
           <div className="content">
             {product.description}
           </div>
+          <div className='content'>
+            Quantity: {product.quantity}
+          </div>
         </div>
         {
           isOwner ?
