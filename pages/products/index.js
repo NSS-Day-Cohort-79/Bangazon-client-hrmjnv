@@ -60,6 +60,7 @@ export default function Products() {
 
         return nextProduct.id - currentProduct.id
       })
+      .slice(0, 5)
   }
 
   if (isLoading) return <p>{loadingMessage}</p>
