@@ -5,11 +5,12 @@ import Navbar from '../../../components/navbar'
 import { ProductCard } from '../../../components/product/card'
 import Detail from '../../../components/store/detail'
 import { useAppContext } from '../../../context/state'
+import { getUserProfile } from '../../../data/auth'
 import { deleteProduct } from '../../../data/products'
-import { favoriteStore, getStoreById, unfavoriteStore } from '../../../data/stores'
+import { deleteStore, favoriteStore, getStoreById, unfavoriteStore } from '../../../data/stores'
 
 export default function StoreDetail() {
-  const { profile } = useAppContext()
+  const { profile, setProfile } = useAppContext()
   const router = useRouter()
   const { id } = router.query
   const [store, setStore] = useState({})
@@ -44,9 +45,15 @@ export default function StoreDetail() {
     unfavoriteStore(id).then(refresh)
   }
 
+  const removeStore = () => {
+    deleteStore(id).then(() => getUserProfile().then(profileData => {
+      if (profileData) setProfile(profileData)
+    })).then(() => router.push('/stores'))
+  }
+
   return (
     <>
-      <Detail store={store} isOwner={isOwner} favorite={favorite} unfavorite={unfavorite} />
+      <Detail store={store} isOwner={isOwner} favorite={favorite} unfavorite={unfavorite} deleteStore={removeStore} />
       <div className="columns is-multiline">
         {
           store.products?.map(product => (

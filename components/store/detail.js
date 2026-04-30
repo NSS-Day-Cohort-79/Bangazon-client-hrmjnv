@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function Detail({ store, isOwner, favorite, unfavorite }) {
+export default function Detail({ store, isOwner, favorite, unfavorite, deleteStore }) {
   const ownerButtons = () => {
     return (
       <div className="buttons">
@@ -10,6 +10,9 @@ export default function Detail({ store, isOwner, favorite, unfavorite }) {
         <Link href="/products/new" className="button is-primary is-inverted">
             Add a Product
         </Link>
+        <button className="button is-danger is-inverted" onClick={deleteStore}>
+            Delete Store
+        </button>
       </div>
     )
   }
