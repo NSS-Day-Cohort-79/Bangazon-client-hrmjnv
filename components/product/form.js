@@ -40,6 +40,9 @@ export default function ProductForm({ formEl, saveEvent, title, router }) {
           label="Quantity"
           type="number"
           min="1"
+          onChangeEvent={(e) => {
+            if (parseFloat(e.target.value) < parseFloat(e.target.min)) e.target.value = e.target.min
+          }}
         />
       </form>
       <>
