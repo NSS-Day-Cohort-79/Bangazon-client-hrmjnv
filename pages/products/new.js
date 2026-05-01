@@ -1,17 +1,16 @@
-import { useRouter } from 'next/router'
-import { useRef } from 'react'
-import Layout from '../../components/layout'
-import Navbar from '../../components/navbar'
-import { addProduct } from '../../data/products'
-import ProductForm from '../../components/product/form'
-import { useAppContext } from '../../context/state'
+import { useRouter } from "next/router";
+import { useRef } from "react";
+import Layout from "../../components/layout";
+import Navbar from "../../components/navbar";
+import { addProduct } from "../../data/products";
+import ProductForm from "../../components/product/form";
 export default function NewProduct() {
-  const formEl = useRef()
-  const router = useRouter()
-  const { profile } = useAppContext()
+  const formEl = useRef();
+  const router = useRouter();
 
   const saveProduct = () => {
-    const { name, description, price, category, location, quantity  } = formEl.current
+    const { name, description, price, category, location, quantity } =
+      formEl.current;
     const product = {
       name: name.value,
       description: description.value,
@@ -19,10 +18,9 @@ export default function NewProduct() {
       category_id: category.value,
       location: location.value,
       quantity: quantity.value,
-      store_id: profile.store?.id
-    }
-    addProduct(product).then((res) => router.push(`/products/${res.id}`))
-  }
+    };
+    addProduct(product).then((res) => router.push(`/products/${res.id}`));
+  };
 
   return (
     <ProductForm
@@ -31,7 +29,7 @@ export default function NewProduct() {
       title="Add a new product"
       router={router}
     ></ProductForm>
-  )
+  );
 }
 
 NewProduct.getLayout = function getLayout(page) {
@@ -40,5 +38,5 @@ NewProduct.getLayout = function getLayout(page) {
       <Navbar />
       {page}
     </Layout>
-  )
-}
+  );
+};
