@@ -16,6 +16,9 @@ export function StoreCard({ store, width= "is-half" }) {
           <div className="content">
             {store.description}
           </div>
+          <div className="content">
+            Total Inventory: {store.products.length}
+          </div>
         </div>
         <footer className="card-footer">
           <Link href={`stores/${store.id}`} className="card-footer-item">View Store</Link>

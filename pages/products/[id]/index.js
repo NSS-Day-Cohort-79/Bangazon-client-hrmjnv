@@ -16,6 +16,8 @@ export default function ProductDetail() {
       if (productData) {
         setProduct(productData)
       }
+    }).catch(() => {
+      router.push('/products')
     })
   }
 

@@ -38,6 +38,15 @@ export function editStore(store) {
   })
 }
 
+export function deleteStore(storeId) {
+  return fetchWithoutResponse(`stores/${storeId}`, {
+    method: 'DELETE',
+    headers: {
+      Authorization: `Token ${localStorage.getItem('token')}`
+    }
+  })
+}
+
 export function favoriteStore(storeId) {
   return fetchWithoutResponse(`stores/${storeId}/favorite`, {
     method: 'POST',
