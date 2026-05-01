@@ -1,4 +1,15 @@
-export function Input({ id, type="text", placeholder="", refEl=undefined, label=undefined, onChangeEvent, addlClass="", required, children }) {
+export function Input({
+  id,
+  type = "text",
+  placeholder = "",
+  refEl = undefined,
+  label = undefined,
+  onChangeEvent,
+  addlClass = "",
+  required,
+  min,
+  children,
+}) {
   return (
     <div className={`field ${addlClass}`}>
       {label && <label className="label">{label}</label>}
@@ -11,9 +22,10 @@ export function Input({ id, type="text", placeholder="", refEl=undefined, label=
           ref={refEl}
           onChange={onChangeEvent}
           required={required}
+          min={min}
         ></input>
       </div>
       {children}
     </div>
-  )
+  );
 }

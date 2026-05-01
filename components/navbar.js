@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useAppContext } from '../context/state'
 
 export default function Navbar() {
-  const { token, profile } = useAppContext()
+  const { token, profile, profileLoading } = useAppContext()
   const hamburger = useRef()
   const navbar = useRef()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -35,7 +35,7 @@ export default function Navbar() {
           {
             profile.store ?
               <>
-                <Link href={`/stores/${profile.store.id}`}><a className="navbar-item">View Your Store</a></Link>
+                <Link href={`/stores/${profile.store.id}`} className="navbar-item">View Your Store</Link>
                 <Link href="/products/new" className="navbar-item">Add a new Product</Link>
               </>
               :
@@ -94,7 +94,9 @@ export default function Navbar() {
         </div>
         <div className="navbar-end">
           {
-            isLoggedIn ? getLoggedInButtons() : getLoggedOutButtons()
+            profileLoading
+              ? <div className="navbar-item"><span className="icon"><i className="fas fa-spinner fa-spin"></i></span></div>
+              : isLoggedIn ? getLoggedInButtons() : getLoggedOutButtons()
           }
         </div>
       </div>
